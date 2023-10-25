@@ -130,10 +130,19 @@
       
       <div class="price">Precio para comprar: ${filteredExchangeData[exchange].ask}</div>
       <div class="price">Precio para vender: ${filteredExchangeData[exchange].bid}</div>
-      <!--<div class="price">Spread: ${filteredExchangeData[exchange].spread.toFixed(2)}</div>-->
+      <div class="price">
+        Spread: ${ (filteredExchangeData[exchange].ask - filteredExchangeData[exchange].bid).toFixed(2) }
+      </div>
     </a>
   </div>
 {/each}
+</div>
+
+<a id="cafecito" href='https://cafecito.app/ferminrp' rel='noopener' target='_blank'><img srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_3.png' alt='Invitame un café en cafecito.app' /></a>
+<div style="margin-top: 20px;">
+  <small>Última actualización: ${new Date().toLocaleTimeString()}</small><br>
+  <small>Data provista por el api de criptoya.com</small><br>
+  <small>Sugerencias a <a href="https://x.com/ferminrp">X.com/ferminrp</a></small>
 </div>
 </section>
 
