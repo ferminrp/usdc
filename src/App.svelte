@@ -124,8 +124,8 @@
   <div class="container">
   {#each Object.keys(filteredExchangeData) as exchange}
   <div class="card" class:best-card={exchange === bestExchangeToBuy || exchange === bestExchangeToSell || exchange === bestSpreadExchange}>
-    <a target="_blank" href={EXCHANGE_INFO[exchange].url} style="display: block;">
-      <img class="logo" src={EXCHANGE_INFO[exchange].logo} alt="{exchange} Logo" style="border-radius: 50%; width: 40px; height: 40px;">
+    <a target="_blank" href={EXCHANGE_INFO[exchange].url}>
+      <img class="logo" src={EXCHANGE_INFO[exchange].logo} alt="{exchange} Logo">
       <div class="exchange-name">{exchange}</div>
       
       <div class="price">Precio para comprar: ${filteredExchangeData[exchange].ask}</div>
@@ -146,78 +146,3 @@
 </div>
 </section>
 
-
-<style>
-  section {
-    font-family: 'Manrope', sans-serif;
-    margin: 20px;
-    background: #F5F6F8;
-    color: #4C505B;
-  }
-  h1 {
-    font-weight: 800;
-  }
-  .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-  }
-  .card {
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #E7E8EA;
-    border-radius: 8px;
-  }
-  .best {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  .best-card {
-    border-color: #683FFD;
-  }
-  a {
-    text-decoration: none;
-  }
-  a .exchange-name {
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #4C505B;
-    text-decoration: none;
-    font-size: 1.2em;
-  }
-  a .price {
-    color: #4C505B;
-    text-decoration: none;
-  }
-  .best-exchange {
-    font-weight: bold;
-    background-color: #E7E8EA;
-    padding: 12px;
-    border-radius: 8px;
-  }
-  .logo {
-    margin-bottom: 12px;
-  }
-  svg {
-    background-color: #683FFD;
-    border-radius: 4px;
-    padding: 1px;
-    margin-bottom: 6px;
-    margin-right: 18px;
-  }
-  .best-price {
-    color: #683FFD;
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  .inline-container {
-    display: flex;
-    align-items: center;
-  }
-  #cafecito {
-    display:block;
-    margin-top: 20px;
-  }
-</style>

@@ -1,6 +1,89 @@
 body {
-  font-family: 'Manrope', sans-serif;
-  margin: 20px;
-  background: #F5F6F8;
-  color: #4C505B;
+  font-family: "Manrope", sans-serif;
+  margin: 0 20px;
+  background: #f5f6f8;
+  color: #4c505b;
+}
+
+section {
+  font-family: "Manrope", sans-serif;
+  background: #f5f6f8;
+  color: #4c505b;
+}
+h1 {
+  font-weight: 800;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.card {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #e7e8ea;
+  border-radius: 8px;
+}
+.best {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.best-card {
+  border-color: #683ffd;
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+a .exchange-name {
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #4c505b;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+a .price {
+  color: #4c505b;
+  text-decoration: none;
+  margin: 0.5rem 0;
+}
+.best-exchange {
+  font-weight: bold;
+  background-color: #e7e8ea;
+  padding: 12px;
+  border-radius: 8px;
+}
+.logo {
+  margin-bottom: 12px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+svg {
+  background-color: #683ffd;
+  border-radius: 4px;
+  padding: 1px;
+  margin-bottom: 6px;
+  margin-right: 18px;
+}
+.best-price {
+  color: #683ffd;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.inline-container {
+  display: flex;
+  align-items: center;
+}
+#cafecito {
+  display: block;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
 }
