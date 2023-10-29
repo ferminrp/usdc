@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import Banner from './components/Banner.svelte';
   
   const BLACKLISTED_EXCHANGES = ["latamex", "bitsoalpha", "cryptomkt", "ripioexchange","vibrant","kriptonmarket"];
   let exchangeData = {};
@@ -97,6 +98,7 @@
   }
 </script>
 
+<Banner />
 <section>
   <h1>Cotizaciones de USDC en Exchanges</h1>
   <div class="best">
