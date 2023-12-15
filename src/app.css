@@ -1,31 +1,30 @@
+/* Default light theme */
+:root {
+  --background-color: #F5F6F8;
+  --primary-color: #4C505B;
+  --color-gray-one: #6a6e7c;
+  --color-gray-two: #E7E8EA;
+  --color-gray-three: #FFFFFF;
+  --accent-color: #683FFD;
+  --accent-with-less-opacity: rgba(104, 63, 253, 0.30);
+  --color-warning: #FF9D00;
+  --color-alert: #DE2E21;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #000000;
+    --primary-color: #D1D4DB;
+    --color-gray-one: #828795;
+    --color-gray-two: #1E1E1E;
+    --color-gray-three: #1A1A1A;
+    --accent-color: #7B58FC;
+  }
+}
 body {
   font-family: 'Manrope', sans-serif;
   margin: 20px;
-  background: #F5F6F8;
-  color: #4C505B;
+  background: var(--background-color);
+  color: var(--primary-color);
 }
-
-  /* Default light theme */
-  :root {
-    --background-color: #F5F6F8;
-    --primary-color: #4C505B;
-    --color-gray-one: #6a6e7c;
-    --color-gray-two: #E7E8EA;
-    --color-gray-three: #FFFFFF;
-    --accent-color: #683FFD;
-    --accent-with-less-opacity: rgba(104, 63, 253, 0.30);
-    --color-warning: #FF9D00;
-    --color-alert: #DE2E21;
-  }
-
-  /* Dark theme */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background-color: #000000;
-      --primary-color: #D1D4DB;
-      --color-gray-one: #828795;
-      --color-gray-two: #1E1E1E;
-      --color-gray-three: #1A1A1A;
-      --accent-color: #7B58FC;
-    }
-  }

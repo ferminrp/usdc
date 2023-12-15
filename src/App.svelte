@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import Banner from './components/Banner.svelte';
   import BestExchange from './components/BestExchange.svelte';
+  import Heading from './components/Heading.svelte';
 
   
   let exchangeData = {};
@@ -115,7 +116,7 @@ function findBestExchange(exchangeData, action = "ask") {
 </script>
 
 <section>
-  <h1>Cotizaciones de USDC en Exchanges</h1>
+  <Heading />
   
   {#if Object.keys(exchangeData).length > 0}
   <div class="best">
@@ -177,19 +178,17 @@ function findBestExchange(exchangeData, action = "ask") {
     background: #F5F6F8;
     color: #4C505B;
   }
-  h1 {
-    font-weight: 800;
-  }
   .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* increased from 200px to 250px */
     gap: 16px;
   }
   .card {
     padding: 20px;
-    background: #fff;
-    border: 1px solid #E7E8EA;
+    background: var(--color-gray-three);
+    border: 1px solid var(--color-gray-two);
     border-radius: 8px;
+    position: relative;
   }
   .best {
     display: grid;
@@ -198,34 +197,42 @@ function findBestExchange(exchangeData, action = "ask") {
     margin-bottom: 20px;
   }
   .best-card {
-    border-color: #683FFD;
-  }
-  a {
-    text-decoration: none;
+    border-color: var(--accent-color);
   }
   a .exchange-name {
     font-weight: bold;
     margin-bottom: 12px;
-    color: #4C505B;
+    margin-top: 12px;
     text-decoration: none;
     font-size: 1.2em;
   }
-  a .price {
-    color: #4C505B;
-    text-decoration: none;
+  .best-exchange {
+    font-weight: bold;
+    background-color: var(--color-gray-two);
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .best-exchange p {
+    margin: 0px;
   }
   .logo {
-    margin-bottom: 12px;
+    //margin-bottom: 12px;
   }
   svg {
-    background-color: #683FFD;
+    background-color: var(--accent-color);
     border-radius: 4px;
     padding: 1px;
     margin-bottom: 6px;
     margin-right: 18px;
   }
+  .svg-path {
+    color: var(--background-color);
+  }
   .best-price {
-    color: #683FFD;
+    color: var(--accent-color);
     font-size: 1.2em;
     font-weight: bold;
   }
@@ -237,4 +244,116 @@ function findBestExchange(exchangeData, action = "ask") {
     display:block;
     margin-top: 20px;
   }
+  .fixed-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    z-index: 999;
+    font-size: 1rem;
+    padding: 0.5rem;
+    color: white;
+    text-decoration: none;
+  }
+  .price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .label {
+    color: var(--primary-color);
+    font-weight: 500!important;
+  }
+  .numeric-value {
+    color: var(--color-gray-one);
+    font-variant-numeric: tabular-nums;
+  }
+  .alert {
+    color: var(--color-alert);
+    font-weight: bold;
+  }
+  .warning {
+    color: var(--color-warning);
+    font-weight: bold;
+  }
+.h1-container {
+    display: flex;
+    align-items: center;
+    //justify-content: center;
+    font-family: 'Arial', sans-serif; /* Replace with your desired font */
+}
+
+/* Style the select dropdown */
+.h1-container select {
+    background-color: var(--accent-with-less-opacity);
+    color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 0.8em;
+    
+
+    appearance: none; /* This hides the default dropdown arrow in some browsers */
+    -webkit-appearance: none; /* This hides the default dropdown arrow in Webkit browsers */
+    -moz-appearance: none; /* This hides the default dropdown arrow in Firefox */
+    padding: 4px 10px;
+    margin: 0 4px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    /* Add custom arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="%237C4DFF" viewBox="0 0 256 256"><path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    padding-right:45px; /* Space for the arrow */
+}
+
+/* Just in case, a hover effect */
+.h1-container select:hover {
+    background-color: #ae96f2; /* A slightly darker shade for hover */
+}
+
+option {
+  padding: 4px 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit; /* Inherit the color from the parent element */
+  text-decoration: none; /* Removes underline */
+}
+
+.badge {
+  color: var(--accent-color);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: 50%;
+  text-align: right;
+}
+
+hr {
+  border: none;
+  height: 1px; 
+  background-color: var(--color-gray-two)!important;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.spread-percentage {
+  color: var(--color-gray-one);
+  font-size: 13px;
+}
+.spread-and-percentage {
+  display: flex;
+  flex-direction: column;
+}
+
 </style>
