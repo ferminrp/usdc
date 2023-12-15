@@ -2,68 +2,69 @@
   import { onMount } from 'svelte';
   import Banner from './components/Banner.svelte';
   
-  const BLACKLISTED_EXCHANGES = ["latamex", "bitsoalpha", "cryptomkt", "ripioexchange","vibrant","kriptonmarket"];
   let exchangeData = {};
+
   const EXCHANGE_INFO = {
-  belo: {
-    url: "https://belo.app?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/jS7hVHZM_400x400.jpg?updatedAt=1702030494776&tr=w-60,h-60,f=webp",
-  },
-  lemoncash: {
-    url: "https://lemon.me?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/_gKE_CQT_400x400.jpg?updatedAt=1702030494417&tr=w-60,h-60,f=webp",
-  },
-  letsbit: {
-    url: "https://letsbit.io/?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/imavxY1f_400x400.jpg?updatedAt=1702030494534&tr=w-60,h-60,f=webp",
-  },
-  buenbit: {
-    url: "https://buenbit.com?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734&tr=w-60,h-60,f=webp",
-  },
-  ripio: {
-    url: "https://ripio.com?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/BzpLV7F7_400x400.jpg?updatedAt=1702030970688&tr=w-60,h-60,f=webp",
-  },
-  fiwind: {
-    url: "https://fiwind.io?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696&tr=w-60,h-60,f=webp",
-  },
-  bybit: {
-    url: "https://bybit.com?ref=usdc.ar",
-    logo: "https://pbs.twimg.com/5xv7XJY/bybit-logo-white.jpg",
-  },
-  tiendacrypto: {
-    url: "https://tiendacrypto.com?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/mEGN7laX_400x400.png?updatedAt=1702030494717&tr=w-60,h-60,f=webp",
-  },
-  satoshitango: {
-    url: "https://satoshitango.com?ref=usdc.ar",
-    logo: "https://ik.imagekit.io/ferminrp/l0dXf1pF_400x400.jpg?updatedAt=1702030494516&tr=w-60,h-60,f=webp",
-  },
+    belo: {
+      url: "https://belo.app?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/jS7hVHZM_400x400.jpg?updatedAt=1702030494776&tr=w-60,h-60,f=webp",
+    },
+    lemoncash: {
+      url: "https://lemon.me?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/_gKE_CQT_400x400.jpg?updatedAt=1702030494417&tr=w-60,h-60,f=webp",
+    },
+    letsbit: {
+      url: "https://letsbit.io/?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/imavxY1f_400x400.jpg?updatedAt=1702030494534&tr=w-60,h-60,f=webp",
+    },
+    buenbit: {
+      url: "https://buenbit.com?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734&tr=w-60,h-60,f=webp",
+    },
+    ripio: {
+      url: "https://ripio.com?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/BzpLV7F7_400x400.jpg?updatedAt=1702030970688&tr=w-60,h-60,f=webp",
+    },
+    fiwind: {
+      url: "https://fiwind.io?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696&tr=w-60,h-60,f=webp",
+    },
+    tiendacrypto: {
+      url: "https://tiendacrypto.com?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/mEGN7laX_400x400.png?updatedAt=1702030494717&tr=w-60,h-60,f=webp",
+    },
+    satoshitango: {
+      url: "https://satoshitango.com?ref=usdc.ar",
+      logo: "https://ik.imagekit.io/ferminrp/l0dXf1pF_400x400.jpg?updatedAt=1702030494516&tr=w-60,h-60,f=webp",
+    },
 };
 
-  let defaultUrl = '#'; // Default URL if not found in EXCHANGE_INFO
-  let defaultLogo = ''; // Default logo URL if not found in EXCHANGE_INFO
 
-  onMount(async () => {
+onMount(async () => {
+  try {
     const res = await fetch("https://criptoya.com/api/usdc/ars/100");
     exchangeData = await res.json();
-  });
+  } catch (error) {
+    console.error("Error fetching exchange data:", error);
+    // Manejar el error adecuadamente
+  }
+});
 
-  $: filteredExchangeData = filterBlacklistedExchanges(exchangeData);
+
+  $: filteredExchangeData = filterExchanges(exchangeData);
   $: bestExchangeToBuy = findBestExchange(filteredExchangeData, "ask");
   $: bestExchangeToSell = findBestExchange(filteredExchangeData, "bid");
   $: bestSpreadExchange = findLowestSpreadExchange(filteredExchangeData);
   $: bestSpreadValue = filteredExchangeData[bestSpreadExchange]?.ask - filteredExchangeData[bestSpreadExchange]?.bid;
 
-  function filterBlacklistedExchanges(exchangeData) {
-    return Object.fromEntries(
-      Object.entries(exchangeData).filter(
-        ([exchange]) => !BLACKLISTED_EXCHANGES.includes(exchange.toLowerCase())
-      )
-    );
-  }
+  function filterExchanges(exchangeData) {
+  const exchangeInfoKeys = Object.keys(EXCHANGE_INFO).map(key => key.toLowerCase());
+  return Object.fromEntries(
+    Object.entries(exchangeData).filter(
+      ([exchange]) => exchangeInfoKeys.includes(exchange.toLowerCase())
+    )
+  );
+}
   
   function findBestExchange(exchangeData, action = "ask") {
     let bestExchange = "";
@@ -78,7 +79,6 @@
         bestExchange = exchange;
       }
     }
-
     return bestExchange;
   }
 
@@ -93,12 +93,10 @@
         bestSpreadExchange = exchange;
       }
     }
-
     return bestSpreadExchange;
   }
 </script>
 
-<Banner />
 <section>
   <h1>Cotizaciones de USDC en Exchanges</h1>
   <div class="best">
