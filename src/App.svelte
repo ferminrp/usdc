@@ -5,41 +5,41 @@
   const BLACKLISTED_EXCHANGES = ["latamex", "bitsoalpha", "cryptomkt", "ripioexchange","vibrant","kriptonmarket"];
   let exchangeData = {};
   const EXCHANGE_INFO = {
-  "belo": {
-    "url": "https://belo.app?ref=usdc.ar",
-    "logo": "https://pbs.twimg.com/profile_images/1608876734249582593/jS7hVHZM_400x400.jpg"
+  belo: {
+    url: "https://belo.app?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/jS7hVHZM_400x400.jpg?updatedAt=1702030494776&tr=w-60,h-60,f=webp",
   },
-  "lemoncash": {
-    "url": "https://lemon.me?ref=usdc.ar",
-    "logo": "https://pbs.twimg.com/profile_images/1529811619408117760/_gKE_CQT_400x400.jpg"
+  lemoncash: {
+    url: "https://lemon.me?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/_gKE_CQT_400x400.jpg?updatedAt=1702030494417&tr=w-60,h-60,f=webp",
   },
-  "letsbit": {
-    "url": "https://letsbit.io/?ref=usdc.ar",
-    "logo": "https://pbs.twimg.com/profile_images/1589990872611000321/imavxY1f_400x400.jpg"
+  letsbit: {
+    url: "https://letsbit.io/?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/imavxY1f_400x400.jpg?updatedAt=1702030494534&tr=w-60,h-60,f=webp",
   },
-  "buenbit":{
-    "url":"https://buenbit.com?ref=usdc.ar",
-    "logo":"https://pbs.twimg.com/profile_images/1681298472782426113/nDMEc3-Y_400x400.png"
+  buenbit: {
+    url: "https://buenbit.com?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734&tr=w-60,h-60,f=webp",
   },
-  "ripio":{
-    "url":"https://ripio.com?ref=usdc.ar",
-    "logo":"https://pbs.twimg.com/profile_images/1668306347895472135/BzpLV7F7_400x400.jpg"
+  ripio: {
+    url: "https://ripio.com?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/BzpLV7F7_400x400.jpg?updatedAt=1702030970688&tr=w-60,h-60,f=webp",
   },
-  "fiwind":{
-    "url":"https://fiwind.io?ref=usdc.ar",
-    "logo":"https://pbs.twimg.com/profile_images/1638613392653951029/gKj3U76V_400x400.jpg"
+  fiwind: {
+    url: "https://fiwind.io?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696&tr=w-60,h-60,f=webp",
   },
-  "bybit":{
-    "url":"https://bybit.com?ref=usdc.ar",
-    "logo":"https://pbs.twimg.com/profile_images/1611306382845964289/yphzW-GB_400x400.jpg"
+  bybit: {
+    url: "https://bybit.com?ref=usdc.ar",
+    logo: "https://pbs.twimg.com/5xv7XJY/bybit-logo-white.jpg",
   },
-  "tiendacrypto":{
-    "url":"https://tiendacrypto.com?ref=usdc.ar",
-    "logo":"https://pbs.twimg.com/profile_images/1503863542214270984/mEGN7laX_400x400.png"
+  tiendacrypto: {
+    url: "https://tiendacrypto.com?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/mEGN7laX_400x400.png?updatedAt=1702030494717&tr=w-60,h-60,f=webp",
   },
-  "satoshitango":{
-    "url":"https://satoshitango.com?ref=usdc.ar",
-    "logo":"https://pbs.twimg.com/profile_images/1616138860009865217/l0dXf1pF_400x400.jpg"
+  satoshitango: {
+    url: "https://satoshitango.com?ref=usdc.ar",
+    logo: "https://ik.imagekit.io/ferminrp/l0dXf1pF_400x400.jpg?updatedAt=1702030494516&tr=w-60,h-60,f=webp",
   },
 };
 
